@@ -1,11 +1,13 @@
-<template>
-  <NuxtLayout>
-    <NuxtPage />
-  </NuxtLayout>
-</template>
 <script setup lang="ts">
+const theme = useCookie('theme')
+const mode = theme.value === 'dark' ? 'dark' : 'light'
+
 useHead({
   title: 'Ashraf Mollah',
+  htmlAttrs: {
+    lang: 'en',
+    class: mode
+  },
   bodyAttrs: {
     class: 'bg-zinc-50 text-zinc-900 dark:bg-black dark:text-white font-inter'
   },
@@ -55,3 +57,9 @@ useHead({
   ]
 })
 </script>
+
+<template>
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
+</template>

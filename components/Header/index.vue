@@ -3,7 +3,10 @@
         <div class="container relative z-50 flex justify-between items-center gap-x-2">
             <HeaderAvatar/>
             <HeaderMenu/>
-            <h1>Header</h1>
+            <div class="flex items-center gap-x-3">
+                <HeaderThemeSwitcher/>
+                <HeaderSearch/>
+            </div>
         </div>
     </header>
 </template>
