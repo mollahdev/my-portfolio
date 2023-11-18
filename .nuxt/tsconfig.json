@@ -27,10 +27,10 @@
         "../*"
       ],
       "@": [
-        "../../../../"
+        ".."
       ],
       "@/*": [
-        "../../../..//*"
+        "../*"
       ],
       "~~": [
         ".."
@@ -53,6 +53,9 @@
       "public": [
         "../public"
       ],
+      "public/*": [
+        "../public/*"
+      ],
       "#app": [
         "../node_modules/nuxt/dist/app"
       ],
@@ -61,6 +64,12 @@
       ],
       "vue-demi": [
         "../node_modules/nuxt/dist/app/compat/vue-demi"
+      ],
+      "#image": [
+        "../node_modules/@nuxt/image/dist/runtime"
+      ],
+      "#image/*": [
+        "../node_modules/@nuxt/image/dist/runtime/*"
       ],
       "#vue-router": [
         "./vue-router-stub"
@@ -82,14 +91,15 @@
   "include": [
     "./nuxt.d.ts",
     "../**/*",
+    "../node_modules/@nuxt/image/runtime",
     "../node_modules/@nuxt/devtools/runtime",
     "../node_modules/@nuxt/telemetry/runtime",
-    "..",
-    "../../../../"
+    ".."
   ],
   "exclude": [
     "../node_modules",
     "../node_modules/nuxt/node_modules",
+    "../node_modules/@nuxt/image/runtime/server",
     "../node_modules/@nuxt/devtools/runtime/server",
     "../node_modules/@nuxt/telemetry/runtime/server",
     "../dist",
