@@ -6,7 +6,7 @@ useHead({
   title: 'Ashraf Mollah',
   htmlAttrs: {
     lang: 'en',
-    class: mode
+    class: `overflow-x-hidden ${mode}`
   },
   bodyAttrs: {
     class: 'bg-zinc-50 text-zinc-900 dark:bg-black dark:text-white font-inter overflow-x-hidden'

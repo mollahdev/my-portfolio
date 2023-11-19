@@ -1,8 +1,11 @@
 <template>
    <button type="button">
-        <kbd class="w-12 flex px-2 py-1 items-center justify-center text-base rounded ring-1 dark:ring-white/10 dark:hover:ring-white/20 font-normal bg-white/90 dark:bg-zinc-800/90 text-zinc-900/90 gap-x-1 dark:text-zinc-50/90">
-            <span class="text-xl">⌘</span>
-            <span>K</span>
+        <kbd class="w-9 select-none h-9 md:w-auto md:h-auto flex items-center justify-center rounded-full md:rounded bg-white/90 px-2 py-1 gap-x-1 text-zinc-600 dark:text-zinc-400 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20">
+            <span class="text-xl hidden md:inline-block">⌘</span>
+            <span class="hidden md:inline-block">K</span>
+            <span class="inline-block md:hidden text-primary-800 dark:text-zinc-400">
+                <IconSearch/>
+            </span>
         </kbd>
    </button>
 </template>

@@ -43,12 +43,12 @@ const initialStyle = {
 </script>
 
 <template>
-    <ul ref="menusRef" class="flex rounded-full bg-white/90 px-3 text-sm relative font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10">
+    <ul ref="menusRef" class="hidden md:flex rounded-full bg-white/90 px-3 text-sm relative font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10">
         <li v-for="menu in menus">
             <NuxtLink
                 :to="menu.to"
                 :data-target="menu.to"
-                class="relative block px-3 py-2 transition hover:text-primary-500 dark:hover:text-primary-400"
+                class="relative block px-3 select-none py-2 transition hover:text-primary-500 dark:hover:text-primary-400"
                 exact-active-class="text-primary-500 dark:text-primary-400"
             >
                 {{ menu.label }}

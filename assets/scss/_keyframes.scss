@@ -1,0 +1,41 @@
+// menu overlay
+.mobile-menu-overlay-enter-from,
+.mobile-menu-overlay-leave-to {
+    opacity: 0;
+}
+
+.mobile-menu-overlay-enter-active,
+.mobile-menu-overlay-leave-active {
+    transition: opacity 500ms ease-in-out;
+}
+
+.mobile-menu-overlay-leave-active {
+    transition-delay: 200ms;
+}
+
+.mobile-menu-overlay-enter-to,
+.mobile-menu-overlay-leave-from {
+    opacity: 1;
+}
+// header menu
+.mobile-menu-enter-from,
+.mobile-menu-leave-to {
+    transform: scaleY(.9);
+    opacity: 0;
+}
+
+.mobile-menu-enter-active,
+.mobile-menu-leave-active {
+    transition: transform 400ms, opacity 400ms ease-in-out;
+    transform-origin: top;
+}
+
+.mobile-menu-enter-active {
+    transition-delay: 200ms;
+}
+
+.mobile-menu-enter-to,
+.mobile-menu-leave-from {
+    transform: scale(1);
+    opacity: 1;
+}
