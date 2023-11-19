@@ -4,8 +4,9 @@
     </div>
     <div class="container">
         <Header/>
-        <div class="container relative z-0 px-0 sm:px-[2.5rem]">
+        <main class="container relative z-0 px-0 sm:px-[2.5rem]">
             <slot/>
-        </div>
+        </main>
+        <Footer/>
     </div>
 </template>

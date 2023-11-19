@@ -2,6 +2,7 @@
 declare module 'vue' {
   export interface GlobalComponents {
     'Container': typeof import("../components/Container.vue")['default']
+    'Footer': typeof import("../components/Footer/index.vue")['default']
     'HeaderAvatar': typeof import("../components/Header/Avatar.vue")['default']
     'HeaderMenu': typeof import("../components/Header/Menu.vue")['default']
     'HeaderMobileMenu': typeof import("../components/Header/MobileMenu.vue")['default']
@@ -38,6 +39,7 @@ declare module 'vue' {
     'Html': typeof import("../node_modules/nuxt/dist/head/runtime/components")['Html']
     'Body': typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
     'LazyContainer': typeof import("../components/Container.vue")['default']
+    'LazyFooter': typeof import("../components/Footer/index.vue")['default']
     'LazyHeaderAvatar': typeof import("../components/Header/Avatar.vue")['default']
     'LazyHeaderMenu': typeof import("../components/Header/Menu.vue")['default']
     'LazyHeaderMobileMenu': typeof import("../components/Header/MobileMenu.vue")['default']
@@ -77,6 +79,7 @@ declare module 'vue' {
 }
 
 export const Container: typeof import("../components/Container.vue")['default']
+export const Footer: typeof import("../components/Footer/index.vue")['default']
 export const HeaderAvatar: typeof import("../components/Header/Avatar.vue")['default']
 export const HeaderMenu: typeof import("../components/Header/Menu.vue")['default']
 export const HeaderMobileMenu: typeof import("../components/Header/MobileMenu.vue")['default']
@@ -113,6 +116,7 @@ export const Head: typeof import("../node_modules/nuxt/dist/head/runtime/compone
 export const Html: typeof import("../node_modules/nuxt/dist/head/runtime/components")['Html']
 export const Body: typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
 export const LazyContainer: typeof import("../components/Container.vue")['default']
+export const LazyFooter: typeof import("../components/Footer/index.vue")['default']
 export const LazyHeaderAvatar: typeof import("../components/Header/Avatar.vue")['default']
 export const LazyHeaderMenu: typeof import("../components/Header/Menu.vue")['default']
 export const LazyHeaderMobileMenu: typeof import("../components/Header/MobileMenu.vue")['default']
