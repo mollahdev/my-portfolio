@@ -1,7 +1,7 @@
 <template>
     <NuxtLink to="/">
         <NuxtImg
-            src="images/personal/avatar.png"
+            src="images/personal/avatar.webp"
             loading="lazy"
             width="36"
             height="36"

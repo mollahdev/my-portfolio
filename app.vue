@@ -9,7 +9,7 @@ useHead({
     class: mode
   },
   bodyAttrs: {
-    class: 'bg-zinc-50 text-zinc-900 dark:bg-black dark:text-white font-inter'
+    class: 'bg-zinc-50 text-zinc-900 dark:bg-black dark:text-white font-inter overflow-x-hidden'
   },
   link: [
     {

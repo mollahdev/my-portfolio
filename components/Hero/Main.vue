@@ -20,4 +20,5 @@
             </a>
         </div>
     </div>
+    <HeroImages/>
 </template>
