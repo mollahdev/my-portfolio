@@ -4,7 +4,7 @@
     </div>
     <div class="container">
         <Header/>
-        <main class="container relative z-0 px-0 sm:px-[2.5rem]">
+        <main class="container relative z-0 lg:px-[2.5rem]">
             <slot/>
         </main>
         <Footer/>

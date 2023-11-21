@@ -55,17 +55,21 @@
                     <div v-if="isVisible" @click.prevent="toggleMenu" class="fixed top-0 left-0 w-full h-screen z-40 bg-white/40 dark:bg-black/40 backdrop-blur-sm"></div>
                 </Transition>
                 <Transition name="mobile-menu">
-                    <ul v-if="isVisible" class="fixed top-[65px] z-50 left-0 border-b-2 border-b-primary-400 w-full bg-zinc-100 dark:bg-zinc-900 rounded-bl-xl rounded-br-xl overflow-hidden">
+                    <ul v-if="isVisible" class="fixed top-[65px] max-h-[calc(100vh_-_70px)] overflow-y-auto z-50 left-0 border-b-2 border-b-primary-400 w-full bg-zinc-100 dark:bg-zinc-900 rounded-bl-xl rounded-br-xl overflow-hidden">
                         <li v-for="menu in menus">
                             <NuxtLink
                                 :to="menu.to"
                                 :data-target="menu.to"
-                                class="px-5 block py-4 text-lg select-none border-t border-zinc-200 dark:border-zinc-800 transition hover:text-primary-500 dark:hover:text-primary-400"
+                                class="px-5 block py-3 text-base select-none border-t border-zinc-200 dark:border-zinc-800 transition hover:text-primary-500 dark:hover:text-primary-400"
                                 exact-active-class="text-primary-500 font-semibold dark:text-primary-400 bg-primary-400/10"
                             >
                                 {{ menu.label }}
                             </NuxtLink>
                         </li>
+
+                        <div class="p-4">
+                            <WidgetWork class="bg-white dark:bg-transparent"/>
+                        </div>
                     </ul>
                 </Transition>
             </div>

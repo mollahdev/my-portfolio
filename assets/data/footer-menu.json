@@ -1,0 +1,60 @@
+[
+    {
+        "label": "GENERAL",
+        "menus": [
+            {
+                "label": "Home",
+                "link": "/"
+            },
+            {
+                "label": "About",
+                "link": "/about"
+            },
+            {
+                "label": "Blog",
+                "link": "/blog"
+            },
+            {
+                "label": "Projects",
+                "link": "/projects"
+            },
+            {
+                "label": "Snippets",
+                "link": "/snippets"
+            },
+            {
+                "label": "Tags",
+                "link": "/tags"
+            }
+        ]
+    },
+    {
+        "label": "EXTRAS",
+        "menus": [
+            {
+                "label": "Hire me",
+                "link": "/hire-me"
+            },
+            {
+                "label": "Resume",
+                "link": "/resume"
+            },
+            {
+                "label": "Uses",
+                "link": "/uses"
+            },
+            {
+                "label": "Newsletter",
+                "link": "/prjects"
+            },
+            {
+                "label": "Tweets",
+                "link": "/tweets"
+            },
+            {
+                "label": "Privacy Policy",
+                "link": "/privacy-policy"
+            }
+        ]
+    }
+]
