@@ -1,5 +1,5 @@
 declare module '#gql' {
   type GqlClients = 'default'
-  type GqlOps = 'GetPosts' | 'GetAllTags' | 'GetRecentPosts'
-  const GqClientOps = {"default":["GetPosts","GetAllTags","GetRecentPosts"]}
+  type GqlOps = 'GetRecentPosts' | 'GetAllTags'
+  const GqClientOps = {"default":["GetRecentPosts","GetAllTags"]}
 }

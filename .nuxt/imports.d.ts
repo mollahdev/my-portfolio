@@ -23,6 +23,6 @@ export { withCtx, withDirectives, withKeys, withMemo, withModifiers, withScopeId
 export { injectHead, useHead, useSeoMeta, useHeadSafe, useServerHead, useServerSeoMeta, useServerHeadSafe } from '@unhead/vue';
 export { useGqlHeaders, useGqlToken, useGqlCors, useGqlHost, useGql, useGqlError, useAsyncGql } from '../node_modules/nuxt-graphql-client/dist/runtime/composables/index';
 export { useImage } from '../node_modules/@nuxt/image/dist/runtime/composables';
-export { GqlGetAllTags, GqlGetPosts } from '#gql';
+export { GqlGetAllTags, GqlGetRecentPosts } from '#gql';
 export { useNuxtDevTools } from '../node_modules/@nuxt/devtools/dist/runtime/use-nuxt-devtools';
 export { definePageMeta } from '../node_modules/nuxt/dist/pages/runtime/composables';

@@ -1,5 +1,5 @@
 <script setup>
-const { data } = await useAsyncData('getRecentPosts', () => GqlGetRecentPosts(), {
+const { data, pending } = useLazyAsyncData('getRecentPosts', () => GqlGetRecentPosts(), {
     transform(data) {
         return data.posts.nodes.map((post) => {
             // remove these symbol [...] from excerpt
@@ -20,6 +20,7 @@ const { data } = await useAsyncData('getRecentPosts', () => GqlGetRecentPosts(),
         })
     }
 })
+
 </script>
 
 <template>
@@ -31,23 +32,31 @@ const { data } = await useAsyncData('getRecentPosts', () => GqlGetRecentPosts(),
                     <IconPencil/>
                     <span>Recent Articles</span>
                 </h2>
-                <Article 
-                    v-for="(post, index) in data" 
-                    :key="index" 
-                    :date="post.date"
-                    :title="post.title"
-                    :excerpt="post.excerpt"
-                    :slug="post.slug"
-                    :tags="post.tags.nodes"
-                />
+                <template v-if="pending">
+                    <SkeletonArticle v-for="index in 2" :key="index"/>
+                </template>
+                <template v-else-if="data">
+                    <Article 
+                        v-for="(post, index) in data" 
+                        :key="index" 
+                        :date="post.date"
+                        :title="post.title"
+                        :excerpt="post.excerpt"
+                        :slug="post.slug"
+                        :tags="post.tags.nodes"
+                    />
 
-                <NuxtLink
-                    to="/blog"
-                    class="text-primary-700 dark:text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 flex items-center gap-1 ml-auto"
-                >
-                    <span>View All Articles</span> 
-                    <IconArrowRight class="h-4 w-4 flex-none "/>
-                </NuxtLink>
+                    <NuxtLink
+                        to="/blog"
+                        class="text-primary-700 dark:text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 flex items-center gap-1 ml-auto"
+                    >
+                        <span>View All Articles</span> 
+                        <IconArrowRight class="h-4 w-4 flex-none "/>
+                    </NuxtLink>
+                </template>
+                <template v-else>
+                    <p>No post available</p>
+                </template>
             </div>
         </template>
         <template #sidebar>

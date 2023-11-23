@@ -2,7 +2,7 @@
 export {}
 declare global {
   const GqlGetAllTags: typeof import('../gql')['GqlGetAllTags']
-  const GqlGetPosts: typeof import('../gql')['GqlGetPosts']
+  const GqlGetRecentPosts: typeof import('../gql')['GqlGetRecentPosts']
   const abortNavigation: typeof import('../../node_modules/nuxt/dist/app/composables/router')['abortNavigation']
   const addRouteMiddleware: typeof import('../../node_modules/nuxt/dist/app/composables/router')['addRouteMiddleware']
   const cancelIdleCallback: typeof import('../../node_modules/nuxt/dist/app/compat/idle-callback')['cancelIdleCallback']
@@ -154,7 +154,7 @@ import { UnwrapRef } from 'vue'
 declare module 'vue' {
   interface ComponentCustomProperties {
     readonly GqlGetAllTags: UnwrapRef<typeof import('../gql')['GqlGetAllTags']>
-    readonly GqlGetPosts: UnwrapRef<typeof import('../gql')['GqlGetPosts']>
+    readonly GqlGetRecentPosts: UnwrapRef<typeof import('../gql')['GqlGetRecentPosts']>
     readonly abortNavigation: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/router')['abortNavigation']>
     readonly addRouteMiddleware: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/router')['addRouteMiddleware']>
     readonly cancelIdleCallback: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/compat/idle-callback')['cancelIdleCallback']>
@@ -300,7 +300,7 @@ declare module 'vue' {
 declare module '@vue/runtime-core' {
   interface ComponentCustomProperties {
     readonly GqlGetAllTags: UnwrapRef<typeof import('../gql')['GqlGetAllTags']>
-    readonly GqlGetPosts: UnwrapRef<typeof import('../gql')['GqlGetPosts']>
+    readonly GqlGetRecentPosts: UnwrapRef<typeof import('../gql')['GqlGetRecentPosts']>
     readonly abortNavigation: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/router')['abortNavigation']>
     readonly addRouteMiddleware: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/router')['addRouteMiddleware']>
     readonly cancelIdleCallback: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/compat/idle-callback')['cancelIdleCallback']>
