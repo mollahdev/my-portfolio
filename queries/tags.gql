@@ -1,0 +1,8 @@
+query GetAllTags {
+  tags(first: 30) {
+    nodes {
+      slug
+      name
+    }
+  }
+}

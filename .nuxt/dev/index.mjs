@@ -20,6 +20,7 @@ import { parseURL, withoutBase, joinURL, getQuery, withQuery } from 'file:///Vol
 import { createStorage, prefixStorage } from 'file:///Volumes/www/my-portfolio/node_modules/unstorage/dist/index.mjs';
 import unstorage_47drivers_47fs from 'file:///Volumes/www/my-portfolio/node_modules/unstorage/drivers/fs.mjs';
 import { toRouteMatcher, createRouter } from 'file:///Volumes/www/my-portfolio/node_modules/radix3/dist/index.mjs';
+import { GraphQLClient } from 'file:///Volumes/www/my-portfolio/node_modules/graphql-request/build/esm/index.js';
 import { fileURLToPath } from 'node:url';
 import { ipxFSStorage, ipxHttpStorage, createIPX, createIPXH3Handler } from 'file:///Volumes/www/my-portfolio/node_modules/ipx/dist/index.mjs';
 import { isAbsolute } from 'file:///Volumes/www/my-portfolio/node_modules/pathe/dist/index.mjs';
@@ -63,7 +64,33 @@ const _inlineRuntimeConfig = {
       }
     }
   },
-  "public": {},
+  "public": {
+    "GQL_HOST": "https://wordpress-331866-3618714.cloudwaysapps.com/graphql",
+    "graphql-client": {
+      "clients": {
+        "default": {
+          "token": {
+            "type": "Bearer",
+            "name": "Authorization"
+          },
+          "proxyCookies": true,
+          "tokenStorage": {
+            "mode": "cookie",
+            "cookieOptions": {
+              "maxAge": 604800,
+              "secure": false
+            },
+            "name": "gql:default"
+          },
+          "preferGETQueries": false,
+          "host": "https://wordpress-331866-3618714.cloudwaysapps.com/graphql"
+        }
+      }
+    }
+  },
+  "graphql-client": {
+    "clients": {}
+  },
   "ipx": {
     "baseURL": "/_ipx",
     "alias": {},
@@ -519,9 +546,9 @@ function normalizeCookieHeaders(headers) {
   return outgoingHeaders;
 }
 
-const config = useRuntimeConfig();
+const config$1 = useRuntimeConfig();
 const _routeRulesMatcher = toRouteMatcher(
-  createRouter({ routes: config.nitro.routeRules })
+  createRouter({ routes: config$1.nitro.routeRules })
 );
 function createRouteRulesHandler(ctx) {
   return eventHandler((event) => {
@@ -586,9 +613,9 @@ const _qi2qtEfhXS = (function(nitro) {
   });
 });
 
-const plugins = [
-  _qi2qtEfhXS
-];
+function defineNitroPlugin(def) {
+  return def;
+}
 
 function defineRenderHandler(handler) {
   return eventHandler(async (event) => {
@@ -619,6 +646,34 @@ function defineRenderHandler(handler) {
     return response.body;
   });
 }
+
+const config = {"default":{"token":{"type":"Bearer","name":"Authorization"},"proxyCookies":true,"tokenStorage":{"mode":"cookie","cookieOptions":{"maxAge":604800,"secure":false},"name":"gql:default"},"preferGETQueries":false,"host":"https://wordpress-331866-3618714.cloudwaysapps.com/graphql"}};
+const clients = {};
+const GqlNitro = { clients, config };
+
+const _YMtayJSZi9 = defineNitroPlugin(() => {
+  const GqlConfig = GqlNitro.config;
+  for (const [client, conf] of Object.entries(GqlConfig)) {
+    const serverHeaders = typeof conf?.headers?.serverOnly === "object" && conf?.headers?.serverOnly || void 0;
+    if (conf?.headers?.serverOnly) {
+      delete conf.headers.serverOnly;
+    }
+    const tokenName = conf.token.name;
+    const tokenType = conf.token.type;
+    const authToken = !tokenType ? conf?.token?.value : `${tokenType} ${conf?.token?.value}`;
+    const headers = {
+      ...conf?.headers,
+      ...serverHeaders,
+      ...conf?.token?.value && { [tokenName]: authToken }
+    };
+    GqlNitro.clients[client] = new GraphQLClient(conf.host, { headers });
+  }
+});
+
+const plugins = [
+  _qi2qtEfhXS,
+_YMtayJSZi9
+];
 
 const errorHandler = (async function errorhandler(error, event) {
   const { stack, statusCode, statusMessage, message } = normalizeError(error);

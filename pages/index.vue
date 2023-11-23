@@ -1,11 +1,58 @@
+<script setup>
+const { data } = await useAsyncData('getRecentPosts', () => GqlGetRecentPosts(), {
+    transform(data) {
+        return data.posts.nodes.map((post) => {
+            // remove these symbol [...] from excerpt
+            const excerpt = post.excerpt.replace(/\[&hellip;\]/g, '')
+            // make readable date
+            const date = new Date(post.date).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric'
+            })
+            return {
+                date,
+                title: post.title,
+                excerpt,
+                slug: post.slug,
+                tags: post.tags
+            }
+        })
+    }
+})
+</script>
+
 <template>
     <HeroMain/>
     <WrapperSidebar class="pb-6 md:pb-16">
         <template #content>
-            <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas voluptates autem optio alias maxime mollitia aut eaque, officia impedit voluptatum sunt aspernatur provident! At illum cum, aliquam quod quasi similique minus labore eaque nesciunt saepe odio quos minima illo, iusto dolores. Illum deserunt porro repellendus laboriosam temporibus ipsa ab earum quae aperiam voluptatem iusto soluta expedita placeat excepturi architecto sunt neque quod corrupti, sint, praesentium quia maxime accusamus. Nobis optio quis ab, nemo totam beatae, possimus laudantium inventore laborum culpa perspiciatis quo tenetur animi obcaecati et molestias asperiores. Aliquam ullam modi asperiores facilis labore placeat quis amet debitis vel ratione? Nesciunt, nihil. Ducimus consectetur officia mollitia magni quaerat itaque explicabo doloribus veniam debitis eveniet molestiae excepturi facilis non fuga, culpa molestias? Expedita consectetur voluptatum similique? Minima recusandae quas eos a ab eaque ullam assumenda nulla dolorum? Laborum qui quod placeat non deserunt molestiae, laudantium aperiam delectus aspernatur? Error nostrum iste, quae vel incidunt quia sunt est laboriosam deserunt enim unde iusto, excepturi quidem accusantium facilis voluptatem aut. Autem quam repudiandae a excepturi, modi ex veniam dicta mollitia error omnis distinctio tempora dignissimos quisquam saepe eius atque consequatur pariatur quia et blanditiis commodi inventore. Quo ad ut, blanditiis iste praesentium cumque!</h1>
+            <div class="grid gap-16">
+                <h2 class="flex text-sm space-x-2 font-semibold text-zinc-600 dark:text-zinc-400">
+                    <IconPencil/>
+                    <span>Recent Articles</span>
+                </h2>
+                <Article 
+                    v-for="(post, index) in data" 
+                    :key="index" 
+                    :date="post.date"
+                    :title="post.title"
+                    :excerpt="post.excerpt"
+                    :slug="post.slug"
+                    :tags="post.tags.nodes"
+                />
+
+                <NuxtLink
+                    to="/blog"
+                    class="text-primary-700 dark:text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 flex items-center gap-1 ml-auto"
+                >
+                    <span>View All Articles</span> 
+                    <IconArrowRight class="h-4 w-4 flex-none "/>
+                </NuxtLink>
+            </div>
         </template>
         <template #sidebar>
             <WidgetWork/>
+            <WidgetTags/>
             <WidgetNewsletter class="hidden md:inline-block"/>
         </template>
     </WrapperSidebar>

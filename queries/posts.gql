@@ -1,0 +1,16 @@
+query GetRecentPosts {
+  posts(first: 5) {
+    nodes {
+      date
+      excerpt
+      slug
+      tags(first: 3) {
+        nodes {
+          name
+          slug
+        }
+      }
+      title
+    }
+  }
+}
