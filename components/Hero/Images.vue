@@ -1,5 +1,5 @@
 <template>
-    <div class=" md:pt-4 pb-16 md:pb-24 flex items-center gap-x-5 sm:gap-x-8 -mx-[208px] sm:-mx-[331px] md:-mx-[257px]">
+    <div class="pt-6 md:pt-16 pb-16 md:pb-24 flex items-center gap-x-5 sm:gap-x-8 -mx-[208px] sm:-mx-[331px] md:-mx-[257px]">
         <NuxtImg
             src="images/personal/hero-image-1.webp"
             loading="lazy"

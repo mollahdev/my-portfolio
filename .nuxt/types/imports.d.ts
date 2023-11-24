@@ -94,6 +94,7 @@ declare global {
   const unref: typeof import('../../node_modules/vue')['unref']
   const updateAppConfig: typeof import('../../node_modules/nuxt/dist/app/config')['updateAppConfig']
   const useAppConfig: typeof import('../../node_modules/nuxt/dist/app/config')['useAppConfig']
+  const useAppStore: typeof import('../../composables/useAppStore')['default']
   const useAsyncData: typeof import('../../node_modules/nuxt/dist/app/composables/asyncData')['useAsyncData']
   const useAsyncGql: typeof import('../../node_modules/nuxt-graphql-client/dist/runtime/composables/index')['useAsyncGql']
   const useAttrs: typeof import('../../node_modules/vue')['useAttrs']
@@ -246,6 +247,7 @@ declare module 'vue' {
     readonly unref: UnwrapRef<typeof import('../../node_modules/vue')['unref']>
     readonly updateAppConfig: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/config')['updateAppConfig']>
     readonly useAppConfig: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/config')['useAppConfig']>
+    readonly useAppStore: UnwrapRef<typeof import('../../composables/useAppStore')['default']>
     readonly useAsyncData: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/asyncData')['useAsyncData']>
     readonly useAsyncGql: UnwrapRef<typeof import('../../node_modules/nuxt-graphql-client/dist/runtime/composables/index')['useAsyncGql']>
     readonly useAttrs: UnwrapRef<typeof import('../../node_modules/vue')['useAttrs']>
@@ -392,6 +394,7 @@ declare module '@vue/runtime-core' {
     readonly unref: UnwrapRef<typeof import('../../node_modules/vue')['unref']>
     readonly updateAppConfig: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/config')['updateAppConfig']>
     readonly useAppConfig: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/config')['useAppConfig']>
+    readonly useAppStore: UnwrapRef<typeof import('../../composables/useAppStore')['default']>
     readonly useAsyncData: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/asyncData')['useAsyncData']>
     readonly useAsyncGql: UnwrapRef<typeof import('../../node_modules/nuxt-graphql-client/dist/runtime/composables/index')['useAsyncGql']>
     readonly useAttrs: UnwrapRef<typeof import('../../node_modules/vue')['useAttrs']>

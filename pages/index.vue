@@ -1,25 +1,40 @@
 <script setup>
-const { data, pending } = useLazyAsyncData('getRecentPosts', () => GqlGetRecentPosts(), {
-    transform(data) {
-        return data.posts.nodes.map((post) => {
-            // remove these symbol [...] from excerpt
-            const excerpt = post.excerpt.replace(/\[&hellip;\]/g, '')
-            // make readable date
-            const date = new Date(post.date).toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'short',
-                day: 'numeric'
+const { postStore } = useAppStore();
+let pending = false;
+let data = [];
+
+if( !Reflect.has( postStore.value, 'getRecentPosts' ) ) {
+    const response = useLazyAsyncData('getRecentPosts', () => GqlGetRecentPosts(), {
+        transform(data) {
+            return data.posts.nodes.map((post) => {
+                // remove these symbol [...] from excerpt
+                const excerpt = post.excerpt.replace(/\[&hellip;\]/g, '')
+                // make readable date
+                const date = new Date(post.date).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric'
+                })
+                return {
+                    date,
+                    title: post.title,
+                    excerpt,
+                    slug: post.slug,
+                    tags: post.tags
+                }
             })
-            return {
-                date,
-                title: post.title,
-                excerpt,
-                slug: post.slug,
-                tags: post.tags
-            }
-        })
+        }
+    })
+
+    pending = response.pending;
+    data = response.data;
+    postStore.value = {
+        ...postStore.value,
+        getRecentPosts: response.data
     }
-})
+} else {
+    data = postStore.value.getRecentPosts;
+}
 
 </script>
 

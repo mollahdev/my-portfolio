@@ -1,5 +1,5 @@
 <template>
-    <div class="pb-16 md:pb-20 pt-28 md:pt-20 lg:pt-28">
+    <HeroWrapper>
         <h1 class="text-4xl font-bold tracking-tight !leading-[1.3] max-w-4xl text-zinc-800 dark:text-zinc-100 sm:text-5xl">
             <span class="text-zinc-800/40 dark:text-primary-500 italic font-normal text-2xl sm:font-bold sm:text-5xl block">Coding Adventures:</span>
             Embrace the Unexplored</h1>
@@ -19,6 +19,6 @@
                 <IconFacebook/>
             </a>
         </div>
-    </div>
+    </HeroWrapper>
     <HeroImages/>
 </template>
