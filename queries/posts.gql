@@ -1,5 +1,5 @@
-query GetRecentPosts {
-  posts(first: 5) {
+query GetQueryPosts($search: String = "", $tag: String = "", $first: Int = 100) {
+  posts(first: $first, where: {search: $search, tag: $tag}) {
     nodes {
       date
       excerpt

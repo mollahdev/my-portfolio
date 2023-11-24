@@ -4,6 +4,7 @@ import { join } from 'node:path';
 import { mkdirSync } from 'node:fs';
 import { parentPort, threadId } from 'node:worker_threads';
 import { defineEventHandler, handleCacheHeaders, splitCookiesString, isEvent, createEvent, getRequestHeader, eventHandler, setHeaders, sendRedirect, proxyRequest, setResponseHeader, send, getResponseStatus, setResponseStatus, setResponseHeaders, getRequestHeaders, lazyEventHandler, useBase, createApp, createRouter as createRouter$1, toNodeListener, fetchWithEvent, getQuery as getQuery$1, createError, getResponseStatusText } from 'file:///Volumes/www/my-portfolio/node_modules/h3/dist/index.mjs';
+import { AsyncLocalStorage } from 'node:async_hooks';
 import { getRequestDependencies, getPreloadLinks, getPrefetchLinks, createRenderer } from 'file:///Volumes/www/my-portfolio/node_modules/vue-bundle-renderer/dist/runtime.mjs';
 import { stringify, uneval } from 'file:///Volumes/www/my-portfolio/node_modules/devalue/index.js';
 import { renderToString } from 'file:///Volumes/www/my-portfolio/node_modules/vue/server-renderer/index.mjs';
@@ -20,6 +21,7 @@ import { parseURL, withoutBase, joinURL, getQuery, withQuery } from 'file:///Vol
 import { createStorage, prefixStorage } from 'file:///Volumes/www/my-portfolio/node_modules/unstorage/dist/index.mjs';
 import unstorage_47drivers_47fs from 'file:///Volumes/www/my-portfolio/node_modules/unstorage/drivers/fs.mjs';
 import { toRouteMatcher, createRouter } from 'file:///Volumes/www/my-portfolio/node_modules/radix3/dist/index.mjs';
+import { getContext } from 'file:///Volumes/www/my-portfolio/node_modules/unctx/dist/index.mjs';
 import { GraphQLClient } from 'file:///Volumes/www/my-portfolio/node_modules/graphql-request/build/esm/index.js';
 import { fileURLToPath } from 'node:url';
 import { ipxFSStorage, ipxHttpStorage, createIPX, createIPXH3Handler } from 'file:///Volumes/www/my-portfolio/node_modules/ipx/dist/index.mjs';
@@ -596,6 +598,11 @@ function getRouteRulesForPath(path) {
   return defu({}, ..._routeRulesMatcher.matchAll(path).reverse());
 }
 
+const nitroAsyncContext = getContext("nitro-app", {
+  asyncContext: true,
+  AsyncLocalStorage: AsyncLocalStorage 
+});
+
 const script = `
 if (!window.__NUXT_DEVTOOLS_TIME_METRIC__) {
   Object.defineProperty(window, '__NUXT_DEVTOOLS_TIME_METRIC__', {
@@ -868,6 +875,13 @@ function createNitroApp() {
     }
   }
   h3App.use(config.app.baseURL, router.handler);
+  {
+    const _handler = h3App.handler;
+    h3App.handler = (event) => {
+      const ctx = { event };
+      return nitroAsyncContext.callAsync(ctx, () => _handler(event));
+    };
+  }
   const app = {
     hooks,
     h3App,
@@ -1012,6 +1026,9 @@ const appRootTag = "div";
 
 globalThis.__buildAssetsURL = buildAssetsURL;
 globalThis.__publicAssetsURL = publicAssetsURL;
+if (!("AsyncLocalStorage" in globalThis)) {
+  globalThis.AsyncLocalStorage = AsyncLocalStorage;
+}
 const getClientManifest = () => import('file:///Volumes/www/my-portfolio/.nuxt/dist/server/client.manifest.mjs').then((r) => r.default || r).then((r) => typeof r === "function" ? r() : r);
 const getServerEntry = () => import('file:///Volumes/www/my-portfolio/.nuxt/dist/server/server.mjs').then((r) => r.default || r);
 const getSSRStyles = lazyCachedFunction(() => Promise.resolve().then(function () { return styles$1; }).then((r) => r.default || r));

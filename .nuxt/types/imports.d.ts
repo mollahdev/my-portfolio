@@ -2,6 +2,7 @@
 export {}
 declare global {
   const GqlGetAllTags: typeof import('../gql')['GqlGetAllTags']
+  const GqlGetQueryPosts: typeof import('../gql')['GqlGetQueryPosts']
   const GqlGetRecentPosts: typeof import('../gql')['GqlGetRecentPosts']
   const abortNavigation: typeof import('../../node_modules/nuxt/dist/app/composables/router')['abortNavigation']
   const addRouteMiddleware: typeof import('../../node_modules/nuxt/dist/app/composables/router')['addRouteMiddleware']
@@ -134,6 +135,7 @@ declare global {
   const useSlots: typeof import('../../node_modules/vue')['useSlots']
   const useState: typeof import('../../node_modules/nuxt/dist/app/composables/state')['useState']
   const useTransitionState: typeof import('../../node_modules/vue')['useTransitionState']
+  const useUtils: typeof import('../../composables/useUtils')['default']
   const watch: typeof import('../../node_modules/vue')['watch']
   const watchEffect: typeof import('../../node_modules/vue')['watchEffect']
   const watchPostEffect: typeof import('../../node_modules/vue')['watchPostEffect']
@@ -155,6 +157,7 @@ import { UnwrapRef } from 'vue'
 declare module 'vue' {
   interface ComponentCustomProperties {
     readonly GqlGetAllTags: UnwrapRef<typeof import('../gql')['GqlGetAllTags']>
+    readonly GqlGetQueryPosts: UnwrapRef<typeof import('../gql')['GqlGetQueryPosts']>
     readonly GqlGetRecentPosts: UnwrapRef<typeof import('../gql')['GqlGetRecentPosts']>
     readonly abortNavigation: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/router')['abortNavigation']>
     readonly addRouteMiddleware: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/router')['addRouteMiddleware']>
@@ -287,6 +290,7 @@ declare module 'vue' {
     readonly useSlots: UnwrapRef<typeof import('../../node_modules/vue')['useSlots']>
     readonly useState: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/state')['useState']>
     readonly useTransitionState: UnwrapRef<typeof import('../../node_modules/vue')['useTransitionState']>
+    readonly useUtils: UnwrapRef<typeof import('../../composables/useUtils')['default']>
     readonly watch: UnwrapRef<typeof import('../../node_modules/vue')['watch']>
     readonly watchEffect: UnwrapRef<typeof import('../../node_modules/vue')['watchEffect']>
     readonly watchPostEffect: UnwrapRef<typeof import('../../node_modules/vue')['watchPostEffect']>
@@ -302,6 +306,7 @@ declare module 'vue' {
 declare module '@vue/runtime-core' {
   interface ComponentCustomProperties {
     readonly GqlGetAllTags: UnwrapRef<typeof import('../gql')['GqlGetAllTags']>
+    readonly GqlGetQueryPosts: UnwrapRef<typeof import('../gql')['GqlGetQueryPosts']>
     readonly GqlGetRecentPosts: UnwrapRef<typeof import('../gql')['GqlGetRecentPosts']>
     readonly abortNavigation: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/router')['abortNavigation']>
     readonly addRouteMiddleware: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/router')['addRouteMiddleware']>
@@ -434,6 +439,7 @@ declare module '@vue/runtime-core' {
     readonly useSlots: UnwrapRef<typeof import('../../node_modules/vue')['useSlots']>
     readonly useState: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/state')['useState']>
     readonly useTransitionState: UnwrapRef<typeof import('../../node_modules/vue')['useTransitionState']>
+    readonly useUtils: UnwrapRef<typeof import('../../composables/useUtils')['default']>
     readonly watch: UnwrapRef<typeof import('../../node_modules/vue')['watch']>
     readonly watchEffect: UnwrapRef<typeof import('../../node_modules/vue')['watchEffect']>
     readonly watchPostEffect: UnwrapRef<typeof import('../../node_modules/vue')['watchPostEffect']>

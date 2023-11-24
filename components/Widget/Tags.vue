@@ -1,25 +1,11 @@
 <script setup>
-const { tagStore } = useAppStore();
-let pending = false;
-let data = [];
-
-if( !Reflect.has( tagStore.value, 'getAllTags' ) ) {
-    const response = useLazyAsyncData('getAllTags', () => GqlGetAllTags(), {
-        transform(data) {
-            return data.tags.nodes
-        }
-    })
-
-    pending = response.pending;
-    data = response.data;
-
-    tagStore.value = {
-        ...tagStore.value,
-        getAllTags: response.data
+const { cacheResponse } = useUtils();
+const { data, pending } = useLazyAsyncData('getAllTags', () => cacheResponse('tag-widget', () => GqlGetAllTags()), {
+    transform(data) {
+        return data.tags.nodes
     }
-} else {
-    data = tagStore.value.getAllTags;
-}
+})
+
 </script>
 
 <template>

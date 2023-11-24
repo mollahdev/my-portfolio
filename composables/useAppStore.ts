@@ -1,9 +1,7 @@
 export default function useAppStore() {
-    const tagStore = useState('tags', () => ({}))
-    const postStore = useState('posts', () => ({}))
+    const cacheStore = useState('cache', () => ({}))
 
     return {
-        tagStore,
-        postStore
+        cacheStore
     }
 }

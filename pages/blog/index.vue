@@ -1,3 +1,24 @@
+<script setup>
+const { transformPost, cacheResponse } = useUtils()
+const searchValue = ref('')
+
+const cacheId = computed(() => {
+    if( searchValue.value === '' ) return 'blog_all'
+    return `blog_all${searchValue.value.replace(/\s/g, '_')}`
+})
+
+const { pending, data, refresh } = useLazyAsyncData('GetQueryPosts', () => cacheResponse(cacheId.value, () => GqlGetQueryPosts({
+    search: searchValue.value
+})), {
+    transform: transformPost
+})
+
+watch( searchValue, () => {
+    refresh()
+})
+
+</script>
+
 <template>
     <HeroPageBanner>
         <template #title>
@@ -10,5 +31,19 @@
             <WidgetTags/>
         </template>
     </HeroPageBanner>
-    <h1>Blog Page</h1>
+    
+    <div class="py-2 md:py-8">
+        <Search :disable="pending" @search="val => searchValue = val"/>
+    </div>
+
+    <div class="pb-10 md:pb-16 pt-10">
+        <QueryArticle
+            class="grid sm:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-16"
+            :first="100"
+            :skeleton="6"
+            :search="searchValue"
+            :cacheId="cacheId"
+        />
+        <NoResult v-if="!pending && data.length === 0"/>
+    </div>
 </template>
