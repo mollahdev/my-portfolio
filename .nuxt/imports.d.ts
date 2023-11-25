@@ -25,6 +25,6 @@ export { default as useAppStore } from '../composables/useAppStore';
 export { default as useUtils } from '../composables/useUtils';
 export { useGqlHeaders, useGqlToken, useGqlCors, useGqlHost, useGql, useGqlError, useAsyncGql } from '../node_modules/nuxt-graphql-client/dist/runtime/composables/index';
 export { useImage } from '../node_modules/@nuxt/image/dist/runtime/composables';
-export { GqlGetAllTags, GqlGetQueryPosts, GqlGetRecentPosts } from '#gql';
+export { GqlGetAllTags, GqlGetQueryPosts, GqlGetSinglePost } from '#gql';
 export { useNuxtDevTools } from '../node_modules/@nuxt/devtools/dist/runtime/use-nuxt-devtools';
 export { definePageMeta } from '../node_modules/nuxt/dist/pages/runtime/composables';

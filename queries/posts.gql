@@ -14,3 +14,31 @@ query GetQueryPosts($search: String = "", $tag: String = "", $first: Int = 100) 
     }
   }
 }
+
+query GetSinglePost($id: ID = "") {
+  post(id: $id, idType: SLUG) {
+    date
+    content
+    title
+    tags(first: 3) {
+      nodes {
+        name
+        slug
+        posts(first: 3) {
+          nodes {
+            date
+            excerpt
+            slug
+            title
+            tags(first: 3) {
+              nodes {
+                name
+                slug
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

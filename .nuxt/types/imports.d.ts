@@ -3,7 +3,7 @@ export {}
 declare global {
   const GqlGetAllTags: typeof import('../gql')['GqlGetAllTags']
   const GqlGetQueryPosts: typeof import('../gql')['GqlGetQueryPosts']
-  const GqlGetRecentPosts: typeof import('../gql')['GqlGetRecentPosts']
+  const GqlGetSinglePost: typeof import('../gql')['GqlGetSinglePost']
   const abortNavigation: typeof import('../../node_modules/nuxt/dist/app/composables/router')['abortNavigation']
   const addRouteMiddleware: typeof import('../../node_modules/nuxt/dist/app/composables/router')['addRouteMiddleware']
   const cancelIdleCallback: typeof import('../../node_modules/nuxt/dist/app/compat/idle-callback')['cancelIdleCallback']
@@ -158,7 +158,7 @@ declare module 'vue' {
   interface ComponentCustomProperties {
     readonly GqlGetAllTags: UnwrapRef<typeof import('../gql')['GqlGetAllTags']>
     readonly GqlGetQueryPosts: UnwrapRef<typeof import('../gql')['GqlGetQueryPosts']>
-    readonly GqlGetRecentPosts: UnwrapRef<typeof import('../gql')['GqlGetRecentPosts']>
+    readonly GqlGetSinglePost: UnwrapRef<typeof import('../gql')['GqlGetSinglePost']>
     readonly abortNavigation: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/router')['abortNavigation']>
     readonly addRouteMiddleware: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/router')['addRouteMiddleware']>
     readonly cancelIdleCallback: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/compat/idle-callback')['cancelIdleCallback']>
@@ -307,7 +307,7 @@ declare module '@vue/runtime-core' {
   interface ComponentCustomProperties {
     readonly GqlGetAllTags: UnwrapRef<typeof import('../gql')['GqlGetAllTags']>
     readonly GqlGetQueryPosts: UnwrapRef<typeof import('../gql')['GqlGetQueryPosts']>
-    readonly GqlGetRecentPosts: UnwrapRef<typeof import('../gql')['GqlGetRecentPosts']>
+    readonly GqlGetSinglePost: UnwrapRef<typeof import('../gql')['GqlGetSinglePost']>
     readonly abortNavigation: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/router')['abortNavigation']>
     readonly addRouteMiddleware: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/router')['addRouteMiddleware']>
     readonly cancelIdleCallback: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/compat/idle-callback')['cancelIdleCallback']>

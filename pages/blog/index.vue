@@ -38,7 +38,7 @@ watch( searchValue, () => {
 
     <div class="pb-10 md:pb-16 pt-10">
         <QueryArticle
-            class="grid sm:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-16"
+            class="grid sm:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-16 sm:[&_>_*:not(:hover)]:hover:opacity-60"
             :first="100"
             :skeleton="6"
             :search="searchValue"
