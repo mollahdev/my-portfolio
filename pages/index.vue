@@ -1,6 +1,6 @@
 <script setup>
 const { transformPost, cacheResponse } = useUtils()
-const { pending, data } = useLazyAsyncData('GetQueryPosts', () => cacheResponse('recent-articles', () => GqlGetQueryPosts({first: 5})), {
+const { pending, data } = useLazyAsyncData('GetRecentArticles', () => cacheResponse('recent-articles', () => GqlGetQueryPosts({first: 5})), {
     transform: transformPost
 })
 
